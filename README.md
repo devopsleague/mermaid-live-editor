@@ -24,7 +24,7 @@ You can try out a live version [here](https://mermaid.live/).
 ### Run published image
 
 ```bash
-docker run --publish 8000:80 ghcr.io/mermaid-js/mermaid-live-editor
+docker run --platform linux/amd64 --publish 8000:8080 ghcr.io/mermaid-js/mermaid-live-editor
 ```
 
 ### To configure renderer URL
@@ -43,7 +43,7 @@ Default is `https://kroki.io`
 docker compose up --build
 ```
 
-Then open http://localhost:8000
+Then open http://localhost:3000
 
 ## Setup
 

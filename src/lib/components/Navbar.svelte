@@ -18,11 +18,11 @@
   const links: Link[] = [
     {
       title: 'Documentation',
-      href: 'https://mermaid-js.github.io/mermaid/intro/n00b-gettingStarted.html'
+      href: 'https://mermaid.js.org/intro/n00b-gettingStarted.html'
     },
     {
       title: 'Tutorial',
-      href: 'https://mermaid-js.github.io/mermaid/config/Tutorials.html'
+      href: 'https://mermaid.js.org/config/Tutorials.html'
     },
     {
       title: 'Mermaid',
@@ -51,7 +51,7 @@
   </div>
   <label for="menu-toggle" class="pointer-cursor lg:hidden block"
     ><svg
-      class="fill-current "
+      class="fill-current"
       xmlns="http://www.w3.org/2000/svg"
       width="20"
       height="20"
@@ -65,7 +65,7 @@
     <ul class="lg:flex items-center justify-between text-base pt-4 lg:pt-0">
       {#each links as { title, href, icon, img }}
         <li>
-          <a class="btn btn-ghost" target="_blank" rel="noreferrer" {href}>
+          <a class="btn btn-ghost" target="_blank" {href}>
             {#if icon}
               <i class={icon} />
             {:else if img}

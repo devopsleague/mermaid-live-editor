@@ -1,12 +1,26 @@
 export const cmd = `{${Cypress.platform === 'darwin' ? 'meta' : 'ctrl'}}`;
 
-export const getEditor = ({ bottom = true, newline = false } = {}) =>
-  cy
-    .get('#editor textarea:first')
-    .click()
-    .focused()
-    .type(`${bottom ? '{pageDown}' : cmd}`)
-    .type(`${newline ? '{enter}' : cmd}`);
+interface EditorOptions {
+  bottom?: boolean;
+  newline?: boolean;
+}
+
+export const typeInEditor = (
+  text: string,
+  { bottom = true, newline = false }: EditorOptions = {}
+) => {
+  cy.window().should('have.property', 'editorLoaded', true);
+  cy.get('#editor').click();
+  cy.get('#editor').within(($editor) => {
+    if (bottom) {
+      cy.get('textarea').type('{pageDown}', { force: true });
+    }
+    if (newline) {
+      cy.get('textarea').type('{enter}', { force: true });
+    }
+    cy.get('textarea').type(text, { force: true });
+  });
+};
 
 const downloadsFolder = Cypress.config('downloadsFolder');
 
